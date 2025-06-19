@@ -1,0 +1,11 @@
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.AssemblyInfoInputs.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.AssemblyInfo.cs
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.csproj.CoreCompileInputs.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\bin\Debug\net8.0\TouristAgent.Models.deps.json
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\bin\Debug\net8.0\TouristAgent.Models.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\bin\Debug\net8.0\TouristAgent.Models.pdb
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\refint\TouristAgent.Models.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\TouristAgent.Models.pdb
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.Models\obj\Debug\net8.0\ref\TouristAgent.Models.dll

@@ -1,0 +1,17 @@
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.DateBase.deps.json
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.DateBase.runtimeconfig.json
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.DateBase.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.DateBase.pdb
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.Models.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\bin\Debug\net8.0\TouristAgent.Models.pdb
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.csproj.AssemblyReference.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.AssemblyInfoInputs.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.AssemblyInfo.cs
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.csproj.CoreCompileInputs.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristA.1CE516DD.Up2Date
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\refint\TouristAgent.DateBase.dll
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.pdb
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\TouristAgent.DateBase.genruntimeconfig.cache
+C:\Users\User\RiderProjects\TouristAgent\TouristAgent.DateBase\obj\Debug\net8.0\ref\TouristAgent.DateBase.dll

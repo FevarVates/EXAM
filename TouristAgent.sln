@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristAgent", "TouristAgent\TouristAgent.csproj", "{D855EC8F-C4DF-4D1C-8354-522E9085F568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristAgent.DateBase", "TouristAgent.DateBase\TouristAgent.DateBase.csproj", "{1612A270-27C2-4737-8902-E7B94A99DE74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouristAgent.Models", "TouristAgent.Models\TouristAgent.Models.csproj", "{E9E78B8C-2BA3-4B6D-A842-417CCEBF1D8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D855EC8F-C4DF-4D1C-8354-522E9085F568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D855EC8F-C4DF-4D1C-8354-522E9085F568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D855EC8F-C4DF-4D1C-8354-522E9085F568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D855EC8F-C4DF-4D1C-8354-522E9085F568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1612A270-27C2-4737-8902-E7B94A99DE74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1612A270-27C2-4737-8902-E7B94A99DE74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1612A270-27C2-4737-8902-E7B94A99DE74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1612A270-27C2-4737-8902-E7B94A99DE74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E78B8C-2BA3-4B6D-A842-417CCEBF1D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E78B8C-2BA3-4B6D-A842-417CCEBF1D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E78B8C-2BA3-4B6D-A842-417CCEBF1D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E78B8C-2BA3-4B6D-A842-417CCEBF1D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

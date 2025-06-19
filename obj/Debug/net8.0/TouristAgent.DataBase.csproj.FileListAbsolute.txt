@@ -1,0 +1,17 @@
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.DataBase.deps.json
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.DataBase.runtimeconfig.json
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.DataBase.dll
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.DataBase.pdb
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.csproj.AssemblyReference.cache
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.AssemblyInfoInputs.cache
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.AssemblyInfo.cs
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.csproj.CoreCompileInputs.cache
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.dll
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\refint\TouristAgent.DataBase.dll
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.pdb
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristAgent.DataBase.genruntimeconfig.cache
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\ref\TouristAgent.DataBase.dll
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.Models.dll
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\bin\Debug\net8.0\TouristAgent.Models.pdb
+C:\Users\User\RiderProjects\ConsoleApp2\TouristAgent.DataBase\obj\Debug\net8.0\TouristA.1CE528C9.Up2Date
