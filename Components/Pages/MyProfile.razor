@@ -1,0 +1,99 @@
+﻿@page "/MyProfile"
+@using TouristAgent.DateBase
+@using TouristAgent.Models
+@using Microsoft.EntityFrameworkCore
+@inject NavigationManager NavigationManager
+@inject DbConnectionContext ef
+@rendermode InteractiveServer
+
+<p style="color: white">Ваш профиль</p>
+<p>Текущий пользователь ID: @_currentUserId</p>
+<div class="profile-container">
+    <div class="profile-image-section">
+        <img src="images/MyProfile.jpg" class="profile-image"/> 
+    </div>
+</div>
+<div class="profile-details">
+<p style="color: orange;">Ваши записи</p>
+    @if (_userRecords == null)
+    {
+        <p>Загрузка...</p>
+    }
+    else if (!_userRecords.Any())
+    {
+        <p style="color: white">СПИСОК ТУРОВ</p>
+    }
+    else
+    {
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>Услуга</th>
+                <th>Дата</th>
+                <th>Почта</th>
+                <th>Время</th>
+                <th>Телефон</th>
+                <th>Цена</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var rec in _userRecords)
+            {
+                <tr>
+                    <td><div class="custom-text-color">@rec.Service.Title</div></td>
+                    <td><div class="custom-text-color">@rec.DateOfRecord.ToShortDateString()</div></td>
+                    <td><div class="custom-text-color">@rec.Client.Email</div></td>
+                    <td><div class="custom-text-color">@rec.TimeOfRecord.ToString(@"hh\:mm")</div></td>
+                    <td><div class="custom-text-color">@rec.Client.Phone</div></td>
+                    <td><div class="custom-text-color">@rec.Service.Price</div></td>
+                    <td><button class="btn btn-danger" @onclick="() => DeleteRecord(rec)">Отказаться</button></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }   
+ </div>
+
+
+@code {
+    private List<RecordOfService> _userRecords;
+
+    // Предположим, у вас есть текущий пользователь:
+    private int _currentUserId = 2; // Замените на реальный механизм аутентификации
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUserRecords();
+    }
+
+    private async Task LoadUserRecords()
+    {
+        _userRecords = await ef.RecordOfServicess
+            .Where(r => r.ClientId == _currentUserId)
+            .Include(r => r.Service)
+            .Include(r => r.Master)
+            .Include(r => r.Client)
+            .ToListAsync();
+
+        StateHasChanged();
+    }
+
+    // Метод для удаления записи
+    private async Task DeleteRecord(RecordOfService rec)
+    {
+        try
+        {
+            ef.RecordOfServicess.Remove(rec);
+            await ef.SaveChangesAsync();
+
+            // Обновляем список после удаления
+            await LoadUserRecords();
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибок, например, вывод сообщения пользователю
+            Console.WriteLine($"Ошибка при удалении: {ex.Message}");
+        }
+    }
+}

@@ -1,0 +1,81 @@
+﻿@page "/AddService"
+@inject DbConnectionContext ef
+@using TouristAgent.Models
+@using System.Data.Common
+@using TouristAgent.DateBase
+
+@rendermode InteractiveServer
+
+<EditForm Model="_back" FormName="AddRewiews" OnValidSubmit="@SubmitRewiews" class="form">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <p>Введите описание тура</p>
+    <input class="input" @bind-value="@_back.Text" type="text"/>
+    <p>Введите кол-во звёзд отеля</p>
+    <input class="input" @bind-value="@_back.Stars" type="number" min="1" max="5"/>
+    <button type="submit">ДОБАВИТЬ ТУР</button>
+</EditForm>
+
+<table class="tab">
+    @foreach (var item in ef.Backs.ToList())
+    {
+        <tr>
+            <td class="tab-td">@item.Text</td>
+            <th class="tab-td"><a href="@($"/EditTour/{@item.Id}")" class="tab-a">Редактировать</a></th>
+        </tr> 
+    }
+</table>
+<EditForm FormName="formAddItem" Model="_service" OnValidSubmit="@Submit" class="form">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <p>Имя ТурАгента</p>
+    <input type="text" class="input" @bind-value="_service.Title"/>
+    <p>Города и страны</p>
+    <input type="text" class="input" @bind-value="_service.Description"/>
+    <p>Цена услуги</p>
+    <input type="text" class="input" @bind-value="_service.Price"/>
+    <button type="submit">ДОБАВИТЬ УСЛУГУ</button>
+</EditForm>
+
+<table class="tab">
+    @foreach (var item in ef.Servicess
+                  .OrderBy(x=>x.Title)
+                  .ToList())
+    {
+        <tr>
+            <td class="tab-td">@item.Title</td>
+            <th class="tab-td"><a href="@($"/EditService/{@item.Id}")" class="tab-a">Редактировать</a></th>
+        </tr> 
+    }
+</table>
+@code {
+    private Service _service = new Service();
+    
+    private Back _back = new Back();
+    
+    public async Task Submit(EditContext args)
+    {
+        await ef.AddAsync(_service);
+        await ef.SaveChangesAsync();
+        _service = new Service();
+    }
+    
+    private bool ShowModal { get; set; }
+
+    private void ViewModal()
+    {
+        ShowModal = false;
+    }
+
+    private void CloseMod()
+    {
+        ShowModal = false;
+    }
+
+    
+    public async Task SubmitRewiews(EditContext args)
+    {
+        ShowModal = true;
+        await ef.AddAsync(_back);
+        await ef.SaveChangesAsync();
+        _back = new Back();
+    }
+}

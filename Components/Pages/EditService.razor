@@ -1,0 +1,72 @@
+﻿@page "/EditService/{id:int}"
+@using TouristAgent.Models
+@inject NavigationManager NavigationManager
+@using System.Data.Common
+@using TouristAgent.DateBase
+@inject DbConnectionContext ef
+@rendermode InteractiveServer
+
+@if (_service is not null)
+{
+    <EditForm FormName="formAddItem" Model="_service" OnValidSubmit="@Save" class="form">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <p>Название игры</p>
+        <input type="text" class="input" @bind-value="_service.Title"/>
+        <p>Описание</p>
+        <input type="text" class="input" @bind-value="_service.Description"/>
+        <p>Цена Услуги</p>
+        <input type="text" class="input" @bind-value="_service.Price"/>
+        <button type="submit">ИЗМЕНИТЬ УСЛУГУ</button>
+    </EditForm>
+}
+    <div class="btn-div">
+            <button @onclick="DeleteService" class="btn-delete">УДАЛИТЬ УСЛУГУ</button>
+            <button @onclick="GoService" class="btn-delete">ОБРАТНО</button>
+    </div>
+<ModalWindow Title="Вы уверены что хотите удалить услугу?" OnOk="CloseModal" OnClose="DeleteService" ShowModal="@ShowModal">
+    
+</ModalWindow>
+@code {
+    
+    private string text { get; set; } = "/AddService";
+    [Parameter] public int Id { get; set; }
+    private bool ShowModal { get; set; }
+    
+    private Service _service;
+
+    private void ViewModal()
+    {
+        ShowModal = true;
+    }
+
+    private void CloseModal()
+    {
+        ShowModal = false;
+    }
+    
+    protected override void OnInitialized()
+    {
+        _service = ef.Servicess.FirstOrDefault(x => x.Id == Id)?? throw new InvalidOperationException();
+    }
+
+    private async Task Save()
+    {
+        ef.Update(_service);
+        await ef.SaveChangesAsync();
+    }
+
+    private async Task DeleteService()
+    {
+        ef.Remove(_service);
+        await ef.SaveChangesAsync();
+        await InvokeAsync(StateHasChanged);
+        ShowModal = false;
+        NavigationManager.NavigateTo(text);
+    }
+
+    private void GoService()
+    {
+        NavigationManager.NavigateTo(text);
+    }
+
+}

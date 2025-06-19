@@ -1,0 +1,68 @@
+﻿@page "/Record"
+@using TouristAgent.Models
+@using TouristAgent.DateBase
+@inject DbConnectionContext ef
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+<div class="container">
+<EditForm Model="_client" OnValidSubmit="@SaveClient" FormName="FormAddItem" class="form">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <p>Введите своё имя</p>
+    <input type="text" class="input" @bind-value="_client.Name"/>
+    <p>Введите свой номер телефона</p>
+    <input type="tel" placeholder="+7000-000-00-00*" class="input" @bind-value="_client.Phone" />
+    <p>Введите свою почту</p>
+    <input type="email" class="input" @bind-value="_client.Email"/>
+    <p>Когда удобно принять звонок</p>
+    <input type="date" class="input" @bind-value="_record.DateOfRecord"/>
+    <p>Выберите время</p>
+    <input type="time" class="input" @bind-value="_record.TimeOfRecord"/>
+    <p>Выберите Тур-Агента</p>
+    <select class="input" @bind="@_record.ServiceId">
+        <option selected>Выберите услугу</option>
+        @foreach (var item in ef.Servicess.ToList())
+        {
+            <option value="@item.Id">@item.Title</option>
+        }
+    </select>
+
+        <button type="submit">ЗАПИСАТЬСЯ</button>
+    </EditForm>
+</div>
+<ModalWindow Title="Вы успешно записались на стрижку" OnClose="CloseModel" ShowModal="@_showModal" OnOk="OkModel"></ModalWindow>
+@code {
+    private bool _showModal { get; set; }
+    private Client _client = new Client();
+    private RecordOfService _record = new RecordOfService();
+
+    private string text { get; set; } = "/";
+
+    private void CloseModel()
+    {
+        _showModal = false;       
+        Navigation.NavigateTo(text);
+    }    
+    private void OkModel()
+    {
+        _showModal = false;       
+        Navigation.NavigateTo(text);
+    }
+    private async Task SaveClient(EditContext args)
+    {
+        _showModal = true;
+       await ef.AddAsync(_client);
+       await ef.SaveChangesAsync();
+       GetClientId();
+       await ef.AddAsync(_record);
+       await ef.SaveChangesAsync();
+       _client = new Client();
+       _record = new RecordOfService();
+
+    }
+
+    private void GetClientId()
+    {
+        _record.ClientId = _client.Id;
+    }
+
+}

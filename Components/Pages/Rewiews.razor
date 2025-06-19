@@ -1,0 +1,74 @@
+﻿@page "/Rewiews"
+@inject DbConnectionContext ef
+@using TouristAgent.Models
+@using TouristAgent.DateBase
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<p style="color: white">СПИСОК ТУРОВ</p>
+
+<div class="filter-buttons">
+    <button class="filter-btn"@onclick="() => SetStarsFilter(null)">По времени добавления</button>
+    <button class="filter-btn"@onclick="() => SetStarsFilter(1)">1 звезда</button>
+    <button class="filter-btn"@onclick="() => SetStarsFilter(2)">2 звезды</button>
+    <button class="filter-btn"@onclick="() => SetStarsFilter(3)">3 звезды</button>
+    <button class="filter-btn"@onclick="() => SetStarsFilter(4)">4 звезды</button>
+</div>
+
+<div class="Rew">
+    <div class="Rewiews">
+        @{
+            var reviews = ef.Backs.ToList();
+
+            if (SelectedStars.HasValue)
+            {
+                reviews = reviews
+                    .OrderByDescending(r => r.Stars == SelectedStars ? 1 : 0)
+                    .ThenByDescending(r => r.Stars)
+                    .ToList();
+            }
+        }
+
+        @foreach (var item in reviews)
+        {
+            <div class="Rewiews-block">
+                <div class="block">
+                    <img src="images/egypt.jpeg" />
+                    <div class="Rewiews-stars">
+                        Отель:
+                        @for (int i = 1; i <= 4; i++)
+                        {
+                            if (i <= item.Stars)
+                            {
+                                <p>★</p>
+                            }
+                            else
+                            {
+                                <p>☆</p>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="Rewiwews-div-text">
+                    <p class="Reviews-text">@item.Text</p>
+                </div>
+                <button class="title-btn" @onclick="GoToRecord">ЗАПИСАТЬСЯ</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private int? SelectedStars { get; set; } = null;
+
+    private void SetStarsFilter(int? stars)
+    {
+        SelectedStars = stars;
+        StateHasChanged(); // Обновляем компонент после изменения фильтра
+    }
+
+    private void GoToRecord()
+    {
+        NavigationManager.NavigateTo("/Record");
+    }
+}

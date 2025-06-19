@@ -1,0 +1,118 @@
+﻿@* http://127.0.0.1:5000 *@
+@page "/"
+@inject DbConnectionContext ef
+@inject NavigationManager NavigationManager
+@using TouristAgent.DateBase
+@using System.Timers;
+@rendermode InteractiveServer
+
+<div class="background-container">
+    <div class="head-text">
+        <div class="head-text-3">
+            <a class="samara-title" @onclick="GoToTour" href="/Rewiews">Туры</a>
+            <a class="samara-title" href="#contacts-section">Отзывы</a>
+            <a class="samara-title" @onclick="GoToProfile" href="/MyProfile">Мой профиль</a>
+            <a class="samara-title" href="#feedbeak">Контакты</a>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="main-text">
+        <p style="margin-top: 330px; font-size: 120px;" class="main-text-1">TRAVEL TOUR</p>
+        <p style="margin-bottom: 220px; font-size: 45px; color: orange" class="main-text-1">Путешествуй с нами</p>
+    </div>
+    <div class="main-text-2" id="Service">
+        <p class="main-title">УСЛУГИ И ЦЕНЫ</p>
+        <p class="main-title-2">ВСЕ СТРАНЫ В МИРЕ</p>
+    </div>
+    <div class="service">
+        @foreach (var item in ef.Servicess.ToList())
+        {
+            <div class="service-1">
+                <p class="service-text"> @item.Title</p>
+                <p class="service-text"> @item.Description</p>
+                <p class="service-text">@item.Price</p>
+            </div>
+        }
+    </div>   
+    <div class="photo-div">
+        <p class="photo-text" id="contacts-section">ОТЗЫВЫ НАШИХ КЛИЕНТОВ</p>
+    </div>
+    <div class="photo-block">
+        <button @onclick="GotoBackImg" class="btn-img" >←</button>
+        <img src="@_imgPuth[_count]" class="img-block"/>
+        <button @onclick="GotoNextImg" class="btn-img">→</button>
+    </div>
+    <div class="footer">
+        <p class="footer-title">СВЯЗАТЬСЯ С НАМИ</p>
+    </div>
+    <div class="contacts-section" id="feedbeak">
+        <div class="fee">
+            <p class="feedbeek-title">TRAVEL TOUR</p>
+            <p style="color: black" class="feedbeek-title">+7 (987) 923-67-45</p>
+        </div>
+        <div class="feedbeek-2">
+            <p class="feedbeek-title-2">МЫ В СОЦСЕТЯХ</p>
+            <a style="color: black" class="feedbeek-text" href="https://t.me/fevarvates">TELEGRAM</a>
+            <a style="color: black" class="feedbeek-text" href="https://vk.com/arsenfox">ВКОНТАКТЕ</a>
+        </div>
+        <div class="feedbeek-3">
+            <p class="feedbeek-time">ВРЕМЯ РАБОТЫ</p>
+            <p style="color: black" class="feedbeek-time-2">ПН-ВС | 08:00-23:30</p>
+        </div>
+        <div class="contact-info">
+            <p>info@mytour.ru</p>
+            <p>г. Москва</p>
+            <p>просп. Дизайнера</p>
+            <p>д. 213. к. 1, 3 этаж, 214</p>
+        </div>
+    </div>
+
+</div>
+
+
+@code
+{
+    
+    
+    private IList<string> _imgPuth = new List<string>()
+    {
+        "images/Prew1.jpg",
+        "images/Prew2.jpg",
+        "images/Prew3.jpg",
+        "images/Prew4.jpg",
+    };
+    private int _count { get; set; }
+
+    protected override void OnInitialized()
+    {
+         Timer timer = new Timer(5000);
+         timer.Elapsed += OnTimedEvent;
+        timer.Start();
+    }
+    
+
+    private async void OnTimedEvent(object source, ElapsedEventArgs e)
+    {
+        GotoNextImg();
+        await InvokeAsync(StateHasChanged);
+    }
+    
+    private void GotoNextImg()
+    {
+        _count = (_count + 1) % _imgPuth.Count;
+    }    
+    private void GotoBackImg()
+    {
+        _count = (_count + 2) % _imgPuth.Count;
+    }
+    private string text { get; set; } = "/MyProfile";
+
+    private void GoToProfile()
+    {
+        NavigationManager.NavigateTo(text);
+    }
+    private void GoToTour()
+    {
+        NavigationManager.NavigateTo("/Rewiews");
+    }
+}

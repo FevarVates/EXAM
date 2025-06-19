@@ -1,0 +1,71 @@
+﻿@page "/EditTour/{id:int}"
+@using TouristAgent.Models
+@using TouristAgent.DateBase
+@inject NavigationManager NavigationManager
+@inject DbConnectionContext ef
+@rendermode InteractiveServer
+
+<h3>Редактировать тур</h3>
+
+@if (_back is not null)
+{
+    <EditForm Model="_back" OnValidSubmit="@SaveTour">
+        <DataAnnotationsValidator />
+        <div>
+            <label>Название тура</label>
+            <input type="text" class="input" @bind-value="_back.Text" />
+        </div>
+        <div>
+            <label>Количество звезд</label>
+            <input type="text" class="input" @bind-value="_back.Stars" />
+        </div>
+        <button type="submit" class="btn-delete">Сохранить изменения</button>
+    </EditForm>
+    
+}
+else
+{
+    <p>Загрузка...</p>
+}
+
+<div class="btn-div">
+    <button @onclick="DeleteService" class="btn-delete">УДАЛИТЬ УСЛУГУ</button>
+    <button @onclick="GoBack" class="btn-delete">Назад</button>
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private Back? _back;
+
+    protected override void OnInitialized()
+    {
+        // Предполагается, что у вас есть модель Tour
+        _back = ef.Backs.FirstOrDefault(t => t.Id == id);
+        if (_back == null)
+        {
+            // Обработка случая, если тур не найден
+            NavigationManager.NavigateTo("/Tours"); // или другая страница
+        }
+    }
+    private async Task DeleteService()
+    {
+        ef.Remove(_back);
+        await ef.SaveChangesAsync();
+        await InvokeAsync(StateHasChanged);
+        NavigationManager.NavigateTo("/AddService");
+    }
+
+    private async Task SaveTour()
+    {
+        ef.Update(_back);
+        await ef.SaveChangesAsync();
+        NavigationManager.NavigateTo("/Rewiews"); // или другая страница после сохранения
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/AddService");
+    }
+}
